@@ -52,7 +52,7 @@ h1 {
   color: var(--text_color_h1);
   position: absolute;
   text-align: justify;
-  /* right: 10vw; */
+  right: 14vw;
   top: 9vw;
   font-size: 9vw;
 }
@@ -137,10 +137,6 @@ h3 {
 
 }
 }
-
-
-
-
 
 nav {
   position: sticky;
