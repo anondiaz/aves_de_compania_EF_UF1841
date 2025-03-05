@@ -1,3 +1,4 @@
+/* Tipo de imagen global */
 @font-face {
   font-family: "Lato";
   src: url("../fonts/Lato-Regular.woff2") format("woff2"),
@@ -7,7 +8,9 @@
   font-style: normal;
   font-display: swap;
 }
-
+/* Tipo de imagen para titulos en general, hay alguna excepcion, 
+hay una ligera diferencia con respecto al modelo, 
+pero es la que se indica en la documentación */
 @font-face {
   font-family: "Matisan Script PERSONAL USE";
   src: url("../fonts/MatisanScriptPERSONALUSE-Regular.woff2") format("woff2"),
@@ -17,53 +20,67 @@
   font-style: italic;
   font-display: swap;
 }
-
+/* Establecemos unos minimos para poder gestionar correctamente los elementos */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Lato, Arial, Helvetica, sans-serif;
 }
-
+/* Aquí establecemos algunas variables, ancho de página y colores */
 :root {
   --width_xl: 1200px; /* max width */
-  --menu_color: #d6cf7bda;
+  --menu_color: #d6cf7bda; /* for menu */
   --primary_color: #eec886c2; /* for section and footer */
   --text_color_h1: #eec886c2; /* font-size 9vw */
   --text_color_h2: #a39d5c; /* font-size 3.8vw */
   --text_color_h3: #d1ca78; /* font-size 3vw */
   --text_color_p_main: #3d3b22; /* font-size 1.4vw */
   --text_color_p_li_footer: #3d3b22; /* font-size 1rem */
-  --enfasis_color: #000000; /* for hover */
+  --enfasis_color: darkblue; /* for hover, en el documento pone #ffffff4d es muy claro y de momento pongo un darkblue */
 }
 
+/* Ayuda a definir estructura y distribución de los elementos, comentar cuando ya no sea necesario */
+/* div {
+  border: 2px solid black;
+} */
+/* Establecemos la imagen de fondo en el tag/selector main */
 header img {
   width: 100%;
   display: block;
 }
-
-h1,
-h2 {
-  font-family: "Matisan Script PERSONAL USE", serif;
-}
-
+/* Definimos los titulos h1, h2 y h3, fuente, colores, tamaños , hacemos lo mismo para los paragrafos */
 h1 {
+  font-family: "Matisan Script PERSONAL USE", serif;
+  font-size: 9vw;
   color: var(--text_color_h1);
   position: absolute;
   text-align: justify;
   right: 14vw;
   top: 9vw;
-  font-size: 9vw;
 }
 
 h2 {
+  font-family: "Matisan Script PERSONAL USE", serif;
+  font-size: 3.8vw;
   color: var(--text_color_h2);
 }
 
 h3 {
+  font-size: 3vw;
   color: var(--text_color_h3);
 }
 
+main p {
+  font-size: 1.4vw;
+  color: var(--text_color_p_main);
+}
+
+footer li p {
+  font-size: 1rem;
+  color: var(--text_color_p_li_footer);
+}
+/* Dos clases básicas, ancho de página y color de fondo, también se establece el color en essos casos */
 .desktop_xl {
   margin: 0 auto;
   max-width: var(--width_xl);
@@ -71,9 +88,38 @@ h3 {
 
 .fondo_oscuro {
   background-color: var(--primary_color);
-  color: var(--secondary_color);
+  color: var(--text_color_p_main);
 }
-
+/* Usamos el selector nav para establecer los valores del menu, posición y color, 
+además de estilos en las listas, tamaño de letras, colores y comportamiento de los enlaces, como la petición del hover  */
+nav {
+  position: sticky;
+  top: 0px;
+  background-color: var(--menu_color);
+  ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: center;
+    height: 4vw;
+  }
+  li {
+    list-style: none;
+    padding: 1.25vw 0.25vw;
+  }
+  a {
+    text-decoration: none;
+    font-size: 1.4vw;
+    color: #3d3b22;
+    &:hover {
+      border-top: 4px solid var(--enfasis_color);
+      border-bottom: 4px solid var(--enfasis_color);
+      color: var(--enfasis_color);
+      font-size: 1.6vw;
+    }
+  }
+}
+/* Definimos la estructura de los dos bloques superiores, ubicación de los elementos y alineaciones de los textos */
 .bloque_superior {
   display: flex;
   justify-content: space-between;
@@ -87,68 +133,46 @@ h3 {
     width: 100%;
   }
   h2 {
-    font-size: 3.8vw;
     text-align: left;
-    margin: 2rem;
+    margin: 2vw;
   }
   p {
-    font-size: 1.4vw;
     text-align: left;
-    margin: 2rem;
+    margin: 2vw;
   }
 }
-
+/* Definimos la estructura del bloque doble, ubicación de los elementos y alineaciones de los textos */
 .bloque_doble {
   h2 {
-    font-size: 3.8vw;
     text-align: center;
-    margin: 2rem;
+    margin-top: 2rem;
+  }
+  .titulos {
+    display: flex;
+    justify-content: space-between;
+    h3 {
+      margin-bottom: 1vw;
+    }
   }
   div {
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
-    h2 {
-      font-family: Lato, Arial, Helvetica, sans-serif;
-    }
-    h3 {
-      font-size: 3vw;
-    }
+    column-gap: 2rem;
     .texto_debajo {
       display: flex;
       flex-direction: column;
       p {
-        font-size: 1.4vw;
         text-align: left;
-        margin: 2rem;
+        margin-bottom: 3rem;
+      }
+      img {
+        width: 100%;
       }
     }
   }
 }
-
-nav {
-  position: sticky;
-  top: 0px;
-  ul {
-    display: flex;
-    justify-content: space-between;
-  }
-  li {
-    list-style: none;
-    padding: 1rem 0;
-  }
-  a {
-    text-decoration: none;
-    font-size: 1.5rem;
-    color: inherit;
-    &:hover {
-      border-top: 3px solid var(--enfasis_color);
-      border-bottom: 3px solid var(--enfasis_color);
-      color: var(--enfasis_color);
-    }
-  }
-}
-
+/* Clase para las paginas adicionales*/
 .bloque_unico {
   display: flex;
   flex-direction: column;
@@ -156,38 +180,55 @@ nav {
     width: 100%;
   }
   h2 {
-    font-size: 3.8vw;
     text-align: center;
-    margin: 2rem;
+    margin: 2vw;
   }
   p {
-    font-size: 1.4vw;
     text-align: left;
-    margin: 2rem;
+    margin: 2vw;
   }
 }
-
+/* Clases para la pagina extra */
+.bloque1_articulo {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.bloque2_articulo {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  h3 {
+    margin: 15px;
+  }
+  .imagen_articulo {
+    display: flex;
+    flex-flow: row nowrap;
+    column-gap: 100px;
+    img {
+      width: 450px;
+    }
+  }
+}
+/* Una clase para el footer  */
 .pie_pagina {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 25px 0;
   h4 {
     font-size: 1rem;
   }
-  p {
-    font-size: 0.8rem;
-    padding-top: 5px;
+  a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #3d3b22;
   }
 }
-
+/* Otra clase para organizar los iconos de las RRSS */
 .logos_pie {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 1rem;
-  padding-top: 10px;
-  width: 150px;
-  height: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  padding-top: 4px;
   img {
-    width: 100%;
+    width: 35px;
   }
 }
