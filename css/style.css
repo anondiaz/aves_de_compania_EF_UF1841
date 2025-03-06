@@ -41,9 +41,9 @@ pero es la que se indica en la documentación */
 }
 
 /* Ayuda a definir estructura y distribución de los elementos, comentar cuando ya no sea necesario */
-/* div {
+div {
   border: 2px solid black;
-} */
+}
 /* Establecemos la imagen de fondo en el tag/selector main */
 header img {
   width: 100%;
